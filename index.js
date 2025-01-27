@@ -6,10 +6,9 @@ new Vue({
     people_t1: 12,
     people_t2: 4,
     price_factor: 1.05,
-    home: 'birchli',
+    home: null,
     home_rates: {
       birchli: {
-        name: 'Pfadiheim Birchli',
         people_min: 12,
         people_max: 32,
         rate_t1: 16.0,
@@ -25,7 +24,6 @@ new Vue({
         ]
       },
       villa: {
-        name: 'Pfadiheim Villa Kunterbunt',
         people_min: 25,
         people_max: 50,
         rate_t1: 16.0,
@@ -41,7 +39,6 @@ new Vue({
         ]
       },
       muehlebaechli: {
-        name: 'Pfadiheim Mühlebächli',
         people_min: 12,
         people_max: 31,
         rate_t1: 15.0,
@@ -58,10 +55,6 @@ new Vue({
       }
     }
   },
-  beforeMount: function () {
-    var home = this.$el.attributes['data-home'].value;
-    this.rates = this.home_rates[home];
-  },
   watch: {
     people_t1: function (value) {
       this.people_t1 = Math.min(value, this.people_t1_max);
@@ -73,7 +66,23 @@ new Vue({
       this.nights = Math.min(value, this.nights_max);
     }
   },
+  beforeMount: function () {
+    this.home = this.$el.attributes['data-home']?.value;
+  },
   computed: {
+    rates: function() {
+      return this.home_rates[this.home] || {
+        people_min: 0,
+        people_max: 0,
+        rate_t1: 0,
+        rate_t2: 0,
+        tax_t1: 0,
+        tax_t2: 0,
+        additional_costs_night: 0,
+        rate_flat: 0,
+        fixed_price: []
+      };
+    },
     people_t1_with_min: function () {
       return Math.max(this.people_t1, this.rates.people_min - this.people_t2);
     },
@@ -109,6 +118,6 @@ new Vue({
     },
     price_formatted: function () {
       return this.price.toFixed(2);
-    }
+    },
   }
 });

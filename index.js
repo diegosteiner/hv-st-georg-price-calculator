@@ -52,6 +52,21 @@ new Vue({
           560.0,
           885.0
         ]
+      },
+      haselhaus: {
+        people_min: 12,
+        people_max: 28,
+        rate_t1: 13.0,
+        rate_t2: 18.5,
+        tax_t1: 0,
+        tax_t2: 0,
+        additional_costs_night: 1.45,
+        rate_flat: 100.0,
+        fixed_price: [
+          320.0,
+          560.0,
+          885.0
+        ]
       }
     }
   },
@@ -101,11 +116,11 @@ new Vue({
       }
     },
     price: function () {
-      var taxes = (this.people_t1 * this.rates.tax_t1 * this.nights) +
+      const taxes = (this.people_t1 * this.rates.tax_t1 * this.nights) +
         (this.people_t2 * this.rates.tax_t2 * this.nights);
-      var additional_costs = (this.rates.additional_costs_night * (this.nights + 1)) +
+      const additional_costs = (this.rates.additional_costs_night * (this.nights + 1)) +
         (this.rates.rate_flat);
-      var price = 0
+      let price = 0
       switch (this.occupancy_type) {
         case 'festivity':
           price = this.rates.fixed_price[this.nights];

@@ -11,8 +11,8 @@ new Vue({
       birchli: {
         people_min: 12,
         people_max: 32,
-        rate_t1: 16.0,
-        rate_t2: 22.0,
+        rate_t1: 14.0 + 2.0,
+        rate_t2: 19.5 + 2.5,
         tax_t1: 0.65,
         tax_t2: 1.3,
         additional_costs_night: 1.3,
@@ -26,8 +26,8 @@ new Vue({
       villa: {
         people_min: 25,
         people_max: 50,
-        rate_t1: 16.0,
-        rate_t2: 22.0,
+        rate_t1: 14.0 + 2.0,
+        rate_t2: 19.5 + 2.5,
         tax_t1: 1.5,
         tax_t2: 3.0,
         additional_costs_night: 2.0,
@@ -41,8 +41,8 @@ new Vue({
       muehlebaechli: {
         people_min: 12,
         people_max: 31,
-        rate_t1: 15.0,
-        rate_t2: 21.0,
+        rate_t1: 13.0 + 2.0,
+        rate_t2: 18.5 + 2.5,
         tax_t1: 1.5,
         tax_t2: 3.0,
         additional_costs_night: 1.45,
@@ -56,11 +56,11 @@ new Vue({
       haselhaus: {
         people_min: 12,
         people_max: 28,
-        rate_t1: 13.0,
-        rate_t2: 18.5,
+        rate_t1: 14.0 + 2.0,
+        rate_t2: 19.5 + 2.5,
         tax_t1: 0,
         tax_t2: 0,
-        additional_costs_night: 1.45,
+        additional_costs_night: 1.3,
         rate_flat: 100.0,
         fixed_price: [
           320.0,
